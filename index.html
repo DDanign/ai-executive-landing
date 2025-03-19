@@ -9,14 +9,765 @@
     <meta name="author" content="AI Executive" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap">
-    <link rel="stylesheet" href="/src/index.css" />
-    <link rel="stylesheet" href="/src/styles/landing.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <body>
-    <div id="root"></div>
+  <body class="min-h-screen bg-raycast-darker text-white overflow-x-hidden">
+    <!-- Custom cursor follower will be created by JS -->
+    <div class="cursor-follow"></div>
+    
+    <!-- Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 neo-blur">
+      <div class="container mx-auto px-4 sm:px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-2">
+              <svg class="w-8 h-8 text-raycast-purple animate-pulse-soft" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0v-15A2.5 2.5 0 0 1 9.5 2Z"></path>
+                <path d="M14.5 2A2.5 2.5 0 0 1 17 4.5v15a2.5 2.5 0 0 1-5 0v-15A2.5 2.5 0 0 1 14.5 2Z"></path>
+                <path d="M4 12h16"></path>
+              </svg>
+              <span class="text-xl font-bold tracking-tight">AI Executive</span>
+            </div>
+          </div>
+          
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex items-center space-x-8">
+            <a href="#program" class="hover:text-raycast-blue transition-colors">Programa</a>
+            <a href="#modules" class="hover:text-raycast-blue transition-colors">Módulos</a>
+            <a href="#benefits" class="hover:text-raycast-blue transition-colors">Benefícios</a>
+            <a href="#pricing" class="hover:text-raycast-blue transition-colors">Investimento</a>
+            <button class="glass-morphism px-5 py-2 rounded-full text-white font-medium hover:bg-raycast-purple/20 transition-all">
+              Inscreva-se
+            </button>
+          </nav>
+          
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-toggle" class="md:hidden flex items-center">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" x2="20" y1="12" y2="12"></line>
+              <line x1="4" x2="20" y1="6" y2="6"></line>
+              <line x1="4" x2="20" y1="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-raycast-darker/95 backdrop-blur-lg hidden md:hidden">
+      <div class="h-full flex flex-col">
+        <div class="container mx-auto px-4 py-4 flex justify-end">
+          <button id="mobile-menu-close">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18"></path>
+              <path d="m6 6 12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <nav class="flex flex-col items-center justify-center flex-1 space-y-8 text-xl">
+          <a href="#program" class="hover:text-raycast-blue transition-colors">Programa</a>
+          <a href="#modules" class="hover:text-raycast-blue transition-colors">Módulos</a>
+          <a href="#benefits" class="hover:text-raycast-blue transition-colors">Benefícios</a>
+          <a href="#pricing" class="hover:text-raycast-blue transition-colors">Investimento</a>
+          <button class="glass-morphism px-5 py-2 rounded-full text-white font-medium hover:bg-raycast-purple/20 transition-all">
+            Inscreva-se
+          </button>
+        </nav>
+      </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 hero-gradient overflow-hidden">
+      <div class="absolute inset-0 grid-pattern opacity-30"></div>
+      <div class="container mx-auto px-4 sm:px-6 relative">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+          <div class="inline-block mb-3">
+            <span class="tag animate-fade-in">Curso imersivo de 7 horas</span>
+          </div>
+          <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 glow-text animate-fade-in typewriter">
+            <span class="text-gradient">Inteligência Artificial</span> para Executivos
+          </h1>
+          <p class="text-lg md:text-xl text-white/80 mb-8 animate-fade-in-delayed">
+            Fundamentos, Aplicações e Vantagem Competitiva
+          </p>
+          <div class="flex flex-wrap justify-center gap-4 animate-fade-in-delayed">
+            <button class="px-6 py-3 rounded-full bg-gradient-to-r from-raycast-blue to-raycast-purple font-medium transition-all hover:shadow-lg hover:shadow-raycast-purple/30">
+              Inscreva-se Agora
+            </button>
+            <a href="#program" class="px-6 py-3 rounded-full glass-morphism font-medium hover:bg-white/10 transition-all">
+              Ver Programa
+            </a>
+          </div>
+        </div>
+        
+        <!-- Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+          <div class="neo-blur rounded-xl p-6 text-center reveal-item">
+            <div class="mb-3 mx-auto w-14 h-14 rounded-full flex items-center justify-center bg-raycast-purple/20">
+              <svg class="w-7 h-7 text-raycast-purple" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="text-3xl font-bold mb-1">+500</div>
+            <p class="text-white/60">Executivos treinados</p>
+          </div>
+          <div class="neo-blur rounded-xl p-6 text-center reveal-item" style="transition-delay: 0.1s">
+            <div class="mb-3 mx-auto w-14 h-14 rounded-full flex items-center justify-center bg-raycast-blue/20">
+              <svg class="w-7 h-7 text-raycast-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                <path d="M2 12h20"></path>
+              </svg>
+            </div>
+            <div class="text-3xl font-bold mb-1">98%</div>
+            <p class="text-white/60">Taxa de satisfação</p>
+          </div>
+          <div class="neo-blur rounded-xl p-6 text-center reveal-item" style="transition-delay: 0.2s">
+            <div class="mb-3 mx-auto w-14 h-14 rounded-full flex items-center justify-center bg-raycast-green/20">
+              <svg class="w-7 h-7 text-raycast-green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2 L3 14 h9 l-1 8 l10 -12 h-9 l1 -8 Z"></path>
+              </svg>
+            </div>
+            <div class="text-3xl font-bold mb-1">7h</div>
+            <p class="text-white/60">De conteúdo prático</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About the Program -->
+    <section id="program" class="py-20">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="max-w-3xl mx-auto text-center mb-12 reveal-item">
+          <span class="tag mb-4 inline-block">Sobre o curso</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            <span class="text-gradient-static">Visão Completa</span> sobre IA para Líderes
+          </h2>
+          <p class="text-white/70 leading-relaxed">
+            Este curso oferece uma visão completa e pragmática sobre Inteligência Artificial para executivos, 
+            gestores e profissionais que desejam entender como aplicar IA — em especial IA Generativa — 
+            de forma estratégica e responsável em suas organizações.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-16">
+          <div class="order-2 md:order-1 reveal-item">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="glass-morphism p-5 rounded-xl card-hover">
+                <svg class="w-8 h-8 text-raycast-blue mb-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+                <h3 class="font-bold mb-2">Aprendizado Prático</h3>
+                <p class="text-white/70 text-sm">Casos reais e exercícios hands-on durante todo o curso</p>
+              </div>
+              <div class="glass-morphism p-5 rounded-xl card-hover">
+                <svg class="w-8 h-8 text-raycast-purple mb-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0v-15A2.5 2.5 0 0 1 9.5 2Z"></path>
+                  <path d="M14.5 2A2.5 2.5 0 0 1 17 4.5v15a2.5 2.5 0 0 1-5 0v-15A2.5 2.5 0 0 1 14.5 2Z"></path>
+                  <path d="M4 12h16"></path>
+                </svg>
+                <h3 class="font-bold mb-2">Fundamentos Sólidos</h3>
+                <p class="text-white/70 text-sm">Conceitos essenciais de IA explicados em linguagem clara</p>
+              </div>
+              <div class="glass-morphism p-5 rounded-xl card-hover">
+                <svg class="w-8 h-8 text-raycast-green mb-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+                <h3 class="font-bold mb-2">Networking</h3>
+                <p class="text-white/70 text-sm">Troca de experiências com outros profissionais e especialistas</p>
+              </div>
+              <div class="glass-morphism p-5 rounded-xl card-hover">
+                <svg class="w-8 h-8 text-raycast-blue mb-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M13 2 L3 14 h9 l-1 8 l10 -12 h-9 l1 -8 Z"></path>
+                </svg>
+                <h3 class="font-bold mb-2">Aplicação Imediata</h3>
+                <p class="text-white/70 text-sm">Conhecimentos que podem ser aplicados no dia seguinte</p>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 md:order-2 reveal-item">
+            <div class="glass-morphism rounded-xl p-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-24 h-24 bg-raycast-purple/20 rounded-bl-full"></div>
+              <h3 class="text-xl font-bold mb-4">Para quem é este curso?</h3>
+              <ul class="space-y-3">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-raycast-green mr-3 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  <span class="text-white/80">Executivos e gestores interessados em entender como a IA pode gerar vantagem competitiva</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-raycast-green mr-3 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  <span class="text-white/80">Profissionais de nível sênior que precisam alinhar estratégias de IA com objetivos de negócio</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-raycast-green mr-3 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                  <span class="text-white/80">Empreendedores e decisores que desejam identificar oportunidades de inovação usando IA</span>
+                </li>
+              </ul>
+              <div class="mt-6 pt-6 border-t border-white/10">
+                <div class="flex items-center">
+                  <div class="mr-4">
+                    <svg class="progress-ring" width="60" height="60">
+                      <circle class="progress-ring__circle progress-ring__circle--bg" strokeWidth="4" fill="transparent" r="26" cx="30" cy="30"/>
+                      <circle class="progress-ring__circle" data-percent="96" strokeWidth="4" fill="transparent" r="26" cx="30" cy="30"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-bold">96% dos participantes</div>
+                    <div class="text-sm text-white/60">aplicam o conhecimento em até 30 dias</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Modules -->
+    <section id="modules" class="py-20 relative clip-path-diagonal bg-raycast-dark">
+      <div class="absolute inset-0 grid-pattern opacity-20"></div>
+      <div class="container mx-auto px-4 sm:px-6 relative">
+        <div class="max-w-3xl mx-auto text-center mb-16 reveal-item">
+          <span class="tag mb-4 inline-block">Programa do curso</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            <span class="text-gradient-static">Módulos</span> do Curso
+          </h2>
+          <p class="text-white/70 leading-relaxed">
+            Um dia completo de imersão para dominar os conceitos fundamentais e aplicações práticas da IA em negócios
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="module-card reveal-item">
+            <div class="mb-4 flex justify-between items-start">
+              <div class="module-icon bg-raycast-purple/20 w-12 h-12 rounded-full flex items-center justify-center">
+                <svg class="text-raycast-purple w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0v-15A2.5 2.5 0 0 1 9.5 2Z"></path>
+                  <path d="M14.5 2A2.5 2.5 0 0 1 17 4.5v15a2.5 2.5 0 0 1-5 0v-15A2.5 2.5 0 0 1 14.5 2Z"></path>
+                  <path d="M4 12h16"></path>
+                </svg>
+              </div>
+              <span class="text-sm bg-raycast-highlight rounded-full px-3 py-1">1 hora</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Fundamentos de IA</h3>
+            <ul class="space-y-2 text-white/70 text-sm mt-4">
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-purple mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>O que é IA e como ela evoluiu</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-purple mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Diferenças entre IA tradicional e IA Generativa</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-purple mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Elementos essenciais de aplicações de IA</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="module-card reveal-item" style="transition-delay: 0.1s">
+            <div class="mb-4 flex justify-between items-start">
+              <div class="module-icon bg-raycast-blue/20 w-12 h-12 rounded-full flex items-center justify-center">
+                <svg class="text-raycast-blue w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                  <path d="M2 12h20"></path>
+                </svg>
+              </div>
+              <span class="text-sm bg-raycast-highlight rounded-full px-3 py-1">1 hora</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Estratégias de Aplicação</h3>
+            <ul class="space-y-2 text-white/70 text-sm mt-4">
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-blue mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Identificação de oportunidades em ambientes empresariais</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-blue mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Roadmap para implementação de projetos</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-blue mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Fatores críticos de sucesso para projetos de IA</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="module-card reveal-item" style="transition-delay: 0.2s">
+            <div class="mb-4 flex justify-between items-start">
+              <div class="module-icon bg-raycast-green/20 w-12 h-12 rounded-full flex items-center justify-center">
+                <svg class="text-raycast-green w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+              <span class="text-sm bg-raycast-highlight rounded-full px-3 py-1">30 min</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Governança e IA Responsável</h3>
+            <ul class="space-y-2 text-white/70 text-sm mt-4">
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-green mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Pilares de governança: privacidade, transparência, responsabilidade</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-green mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Vieses algorítmicos e mitigação de riscos</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-green mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Frameworks para implementação ética</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="module-card reveal-item">
+            <div class="mb-4 flex justify-between items-start">
+              <div class="module-icon bg-raycast-purple/20 w-12 h-12 rounded-full flex items-center justify-center">
+                <svg class="text-raycast-purple w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M13 2 L3 14 h9 l-1 8 l10 -12 h-9 l1 -8 Z"></path>
+                </svg>
+              </div>
+              <span class="text-sm bg-raycast-highlight rounded-full px-3 py-1">1.5 horas</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Uso Pessoal de IA (Prático)</h3>
+            <ul class="space-y-2 text-white/70 text-sm mt-4">
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-purple mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Ferramentas de IA para produtividade individual</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-purple mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Demonstração hands-on de um caso simples</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-purple mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Integração de IA no fluxo de trabalho executivo</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="module-card reveal-item" style="transition-delay: 0.1s">
+            <div class="mb-4 flex justify-between items-start">
+              <div class="module-icon bg-raycast-blue/20 w-12 h-12 rounded-full flex items-center justify-center">
+                <svg class="text-raycast-blue w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+              </div>
+              <span class="text-sm bg-raycast-highlight rounded-full px-3 py-1">1 hora</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Case Studies</h3>
+            <ul class="space-y-2 text-white/70 text-sm mt-4">
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-blue mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Apresentação de casos reais de empresas</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-blue mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Discussão em grupo: lições aprendidas e desafios</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-blue mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Modelos de referência para escalabilidade</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="module-card reveal-item" style="transition-delay: 0.2s">
+            <div class="mb-4 flex justify-between items-start">
+              <div class="module-icon bg-raycast-green/20 w-12 h-12 rounded-full flex items-center justify-center">
+                <svg class="text-raycast-green w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <span class="text-sm bg-raycast-highlight rounded-full px-3 py-1">1 hora</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Networking e Encerramento</h3>
+            <ul class="space-y-2 text-white/70 text-sm mt-4">
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-green mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Sessão de discussão aberta para troca de experiências</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-green mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Orientações para aprofundamento</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-4 h-4 text-raycast-green mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+                <span>Networking com participantes e instrutor</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Benefits -->
+    <section id="benefits" class="py-20">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="max-w-3xl mx-auto text-center mb-16 reveal-item">
+          <span class="tag mb-4 inline-block">Resultados</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            <span class="text-gradient-static">Benefícios</span> do Curso
+          </h2>
+          <p class="text-white/70 leading-relaxed">
+            Ao final do curso, você estará capacitado para implementar estratégias de IA em sua organização
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div class="reveal-item">
+            <div class="glass-morphism p-8 rounded-xl animate-float">
+              <h3 class="text-2xl font-bold mb-6 text-gradient-static">Você será capaz de:</h3>
+              <ul class="space-y-5">
+                <li class="flex">
+                  <div class="bg-raycast-purple/20 rounded-full p-2 mr-4 shrink-0">
+                    <svg class="w-5 h-5 text-raycast-purple" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold mb-1">Compreender os fundamentos</h4>
+                    <p class="text-white/70 text-sm">Diferenciar os tipos de IA e entender seus principais modelos e funcionamento</p>
+                  </div>
+                </li>
+                <li class="flex">
+                  <div class="bg-raycast-blue/20 rounded-full p-2 mr-4 shrink-0">
+                    <svg class="w-5 h-5 text-raycast-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold mb-1">Identificar aplicações</h4>
+                    <p class="text-white/70 text-sm">Reconhecer oportunidades relevantes e planejar iniciativas de forma estruturada</p>
+                  </div>
+                </li>
+                <li class="flex">
+                  <div class="bg-raycast-green/20 rounded-full p-2 mr-4 shrink-0">
+                    <svg class="w-5 h-5 text-raycast-green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold mb-1">Aplicar práticas de governança</h4>
+                    <p class="text-white/70 text-sm">Implementar ética e compliance, garantindo o uso responsável da IA</p>
+                  </div>
+                </li>
+                <li class="flex">
+                  <div class="bg-raycast-purple/20 rounded-full p-2 mr-4 shrink-0">
+                    <svg class="w-5 h-5 text-raycast-purple" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold mb-1">Maximizar produtividade</h4>
+                    <p class="text-white/70 text-sm">Usar ferramentas de IA para aumentar sua eficiência e a de sua equipe</p>
+                  </div>
+                </li>
+                <li class="flex">
+                  <div class="bg-raycast-blue/20 rounded-full p-2 mr-4 shrink-0">
+                    <svg class="w-5 h-5 text-raycast-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold mb-1">Explorar casos de sucesso</h4>
+                    <p class="text-white/70 text-sm">Aproveitar insights de implementações bem-sucedidas em outras empresas</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="space-y-6 reveal-item">
+            <div class="glass-morphism p-6 rounded-xl">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-raycast-purple/20 flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-raycast-purple" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13 2 L3 14 h9 l-1 8 l10 -12 h-9 l1 -8 Z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold">Aplicação Imediata</h3>
+              </div>
+              <p class="text-white/70">
+                O curso foi desenhado para que você aplique os conhecimentos na semana seguinte, 
+                gerando impacto imediato em sua organização e carreira.
+              </p>
+            </div>
+            
+            <div class="glass-morphism p-6 rounded-xl">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-raycast-blue/20 flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-raycast-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold">Networking Estratégico</h3>
+              </div>
+              <p class="text-white/70">
+                Conexão com outros executivos e decisores que enfrentam desafios similares,
+                criando uma rede valiosa para troca de experiências e oportunidades.
+              </p>
+            </div>
+            
+            <div class="glass-morphism p-6 rounded-xl">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-raycast-green/20 flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-raycast-green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0v-15A2.5 2.5 0 0 1 9.5 2Z"></path>
+                    <path d="M14.5 2A2.5 2.5 0 0 1 17 4.5v15a2.5 2.5 0 0 1-5 0v-15A2.5 2.5 0 0 1 14.5 2Z"></path>
+                    <path d="M4 12h16"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold">Vantagem Competitiva</h3>
+              </div>
+              <p class="text-white/70">
+                Entenda como a IA pode transformar seu negócio e gerar diferenciais
+                em um mercado cada vez mais competitivo e tecnológico.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 bg-raycast-dark relative">
+      <div class="absolute inset-0 grid-pattern opacity-20"></div>
+      <div class="container mx-auto px-4 sm:px-6 relative">
+        <div class="max-w-3xl mx-auto text-center mb-16 reveal-item">
+          <span class="tag mb-4 inline-block">Investimento</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            <span class="text-gradient-static">Valor do</span> Investimento
+          </h2>
+          <p class="text-white/70 leading-relaxed">
+            Invista em sua capacitação e transforme o futuro de sua organização com Inteligência Artificial
+          </p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+          <div class="neo-blur rounded-2xl overflow-hidden reveal-item">
+            <div class="bg-gradient-to-r from-raycast-blue to-raycast-purple p-1">
+              <div class="bg-raycast-dark p-8 md:p-12">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                  <div>
+                    <h3 class="text-2xl md:text-3xl font-bold mb-2">Curso Presencial</h3>
+                    <p class="text-white/70">Um dia completo de imersão em IA</p>
+                  </div>
+                  <div class="mt-4 md:mt-0">
+                    <div class="text-sm text-white/60 mb-1 line-through">R$ 3.900</div>
+                    <div class="text-3xl md:text-4xl font-bold">R$ 3.500</div>
+                    <div class="text-sm text-white/60">ou R$ 3.100 à vista</div>
+                  </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  <div>
+                    <h4 class="font-bold mb-4 flex items-center">
+                      <svg class="w-5 h-5 text-raycast-green mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
+                      O que está incluído
+                    </h4>
+                    <ul class="space-y-3 text-white/80">
+                      <li class="flex items-start">
+                        <svg class="w-4 h-4 text-raycast-purple mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                        <span>7 horas de conteúdo prático</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-4 h-4 text-raycast-purple mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                        <span>Material didático digital</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-4 h-4 text-raycast-purple mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                        <span>Coffee-break e almoço inclusos</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-4 h-4 text-raycast-purple mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                        <span>Certificado de participação</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="font-bold mb-4 flex items-center">
+                      <svg class="w-5 h-5 text-raycast-green mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                      </svg>
+                      Condições especiais
+                    </h4>
+                    <ul class="space-y-3 text-white/80">
+                      <li class="flex items-start">
+                        <svg class="w-4 h-4 text-raycast-blue mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                        <span>Parcelamento em até 6x sem juros</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-4 h-4 text-raycast-blue mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                        <span>10% de desconto para pagamento à vista</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-4 h-4 text-raycast-blue mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                        <span>Descontos para grupos (3+ participantes)</span>
+                      </li>
+                      <li class="flex items-start">
+                        <svg class="w-4 h-4 text-raycast-blue mr-2 mt-0.5 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                        <span>Suporte pós-curso por 30 dias</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                  <button class="px-8 py-4 rounded-full bg-gradient-to-r from-raycast-blue to-raycast-purple font-medium transition-all hover:shadow-lg hover:shadow-raycast-purple/30 w-full md:w-auto">
+                    Inscreva-se Agora
+                  </button>
+                  <p class="mt-4 text-white/60 text-sm">Vagas limitadas - Próxima turma: 15 de Julho</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CTA -->
+    <section class="py-20">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto glass-morphism rounded-2xl p-8 md:p-12 reveal-item">
+          <div class="text-center mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">
+              Pronto para liderar a <span class="text-gradient-static">transformação digital</span>?
+            </h2>
+            <p class="text-white/70 max-w-2xl mx-auto">
+              Não perca a oportunidade de adquirir conhecimentos essenciais sobre IA para impulsionar 
+              sua carreira e transformar sua organização.
+            </p>
+          </div>
+          
+          <div class="flex flex-wrap justify-center gap-6">
+            <button class="px-6 py-3 rounded-full bg-gradient-to-r from-raycast-blue to-raycast-purple font-medium transition-all hover:shadow-lg hover:shadow-raycast-purple/30">
+              Inscreva-se Agora
+            </button>
+            <button class="px-6 py-3 rounded-full neo-blur border border-white/10 font-medium hover:bg-white/5 transition-all">
+              Solicitar Mais Informações
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-10 border-t border-white/10">
+      <div class="container mx-auto px-4 sm:px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-6 md:mb-0">
+            <div class="flex items-center space-x-2">
+              <svg class="w-6 h-6 text-raycast-purple" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0v-15A2.5 2.5 0 0 1 9.5 2Z"></path>
+                <path d="M14.5 2A2.5 2.5 0 0 1 17 4.5v15a2.5 2.5 0 0 1-5 0v-15A2.5 2.5 0 0 1 14.5 2Z"></path>
+                <path d="M4 12h16"></path>
+              </svg>
+              <span class="text-lg font-bold">AI Executive</span>
+            </div>
+          </div>
+          
+          <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 text-sm text-white/60">
+            <a href="#" class="hover:text-white transition-colors">Política de Privacidade</a>
+            <a href="#" class="hover:text-white transition-colors">Termos de Uso</a>
+            <a href="#" class="hover:text-white transition-colors">Contato</a>
+          </div>
+        </div>
+        
+        <div class="mt-8 text-center text-white/40 text-sm">
+          &copy; <script>document.write(new Date().getFullYear());</script> AI Executive. Todos os direitos reservados.
+        </div>
+      </div>
+    </footer>
+
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
+    <script src="script.js"></script>
   </body>
 </html>
